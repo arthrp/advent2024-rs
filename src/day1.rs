@@ -68,4 +68,17 @@ mod tests {
         let res = x.solve();
         assert_eq!(res, 11);
     }
+
+    #[test]
+    fn solve_additional_works(){
+        let data = "3   4\n\
+        4   3\n\
+        2   5\n\
+        1   3\n\
+        3   9\n\
+        3   3";
+        let d = Day1Solver::new(data.to_string());
+        let res = d.solve_additional();
+        assert_eq!(res, 31);
+    }
 }
