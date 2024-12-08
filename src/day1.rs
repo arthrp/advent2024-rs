@@ -50,3 +50,22 @@ impl Day1Solver {
         (arr1, arr2)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn solve_works(){
+        let data = "3   4\n\
+        4   3\n\
+        2   5\n\
+        1   3\n\
+        3   9\n\
+        3   3";
+
+        let x = Day1Solver::new(data.to_string());
+        let res = x.solve();
+        assert_eq!(res, 11);
+    }
+}
