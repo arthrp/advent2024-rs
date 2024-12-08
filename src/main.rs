@@ -1,15 +1,16 @@
 use std::{env, fs};
 
-use day1::Day1Solver;
+use day2::Day2Solver;
 
 mod day1;
+mod day2;
 
 fn main() -> std::io::Result<()> {
     let args: Vec<String> = env::args().collect();
     let content = fs::read_to_string(&args[1])?;
 
-    let solver = Day1Solver::new(content);
-    let result = solver.solve_additional();
+    let solver = Day2Solver::new(content);
+    let result = solver.solve();
 
     println!("Result: {}", result);
 

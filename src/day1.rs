@@ -33,7 +33,7 @@ impl Day1Solver {
     }
 
     fn parse(&self) -> (Vec<i32>, Vec<i32>) {
-        let lines : Vec<&str> = self.data.split('\n').collect();
+        let lines  = self.data.split('\n');
         let mut arr1: Vec<i32> = [].to_vec();
         let mut arr2: Vec<i32> = [].to_vec();
 
