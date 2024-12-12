@@ -16,6 +16,18 @@ impl Day3Solver {
         sum
     }
 
+    pub fn solve_additional(&self) -> i32 {
+        let re = Regex::new(r"mul\(\d+,\d+\)|don\'t\(\)|do\(\)").unwrap();
+        let mut sum = 0;
+        let mut is_stopped = false;
+        for m in re.find_iter(&self.data){
+            if m.as_str() == "do()" { is_stopped = false }
+            else if m.as_str() == "don't()" { is_stopped = true }
+            else if !is_stopped { sum += self.process_mul(m.as_str()) }
+        }
+        sum
+    }
+
     fn process_mul(&self, str: &str) -> i32 {
         let re = Regex::new(r"mul\((\d+),(\d+)\)").unwrap();
         let res: Vec<i32> = re.captures_iter(str).map(|c| {
@@ -38,5 +50,13 @@ mod tests {
         let x = Day3Solver::new(data.to_string());
         let result = x.solve();
         assert_eq!(result, 161);
+    }
+
+    #[test]
+    fn solve_additional_works(){
+        let data = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))";
+        let x = Day3Solver::new(data.to_string());
+        let result = x.solve_additional();
+        assert_eq!(result, 48);
     }
 }

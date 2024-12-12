@@ -11,7 +11,7 @@ fn main() -> std::io::Result<()> {
     let content = fs::read_to_string(&args[1])?;
 
     let solver = Day3Solver::new(content);
-    let result = solver.solve();
+    let result = solver.solve_additional();
 
     println!("Result: {}", result);
 
